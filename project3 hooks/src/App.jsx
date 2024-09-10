@@ -1,8 +1,6 @@
 import { useState } from 'react'
 
 function App() {
-    // const [input, setInput] = useState("");
-
     // todo by useState
     const [todos, setTodos] = useState([]);
     const [newTodo, setNewTodo] = useState("");

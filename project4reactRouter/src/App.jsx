@@ -5,15 +5,15 @@ import Products from "../pages/products.jsx";
 import ProductDetails from "../pages/productdetails.jsx";
 import Navbar from "../components/navbar.jsx";
 import Footer from "../components/footer.jsx";
-import {useState, useEffect} from 'react';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
 function App() {
-  
+
 
   return (
-      <BrowserRouter>
+    <BrowserRouter>
       <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
@@ -22,7 +22,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetails />} />
       </Routes>
-      </BrowserRouter>
+    </BrowserRouter>
   )
 }
 
