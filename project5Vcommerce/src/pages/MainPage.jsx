@@ -2,11 +2,16 @@ import { useState, useEffect } from "react"
 import ProductCard from "../components/ProductCard.jsx"
 import CategoryChip from "../components/CategoryChip.jsx"
 import Footer from "../components/Footer.jsx";
+import React from 'react';
+import { Pagination } from 'antd';
 
 function MainPage() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [chosenCategory, setChosenCategory] = useState("All");
+  const [limit, setLimit] = useState(24);
+  const [total, setTotal] = useState(0);
+  const [skip, setSkip] = useState(0);
 
   useEffect(() => {
     const url = chosenCategory === "All" ?
@@ -28,17 +33,27 @@ function MainPage() {
       }).catch((err) => console.log(err)
       )
   }, [])
+
+  useEffect(() => {
+    fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
+      .then((res) => res.json())
+      .then((res) => {
+        setProducts(res.products)
+        setTotal(res.total)
+      })
+  }, [limit, skip])
+
   return (
     <>
 
     <div className="container mx-auto">
       <div className="flex flex-wrap">
         <CategoryChip
-        onClick={() => setChosenCategory("All")}
-        category={{
-          slug: 'All',
-          name: 'All'
-        }} isChosen={chosenCategory === "All"}
+          onClick={() => setChosenCategory("All")}
+          category={{
+            slug: 'All',
+            name: 'All'
+          }} isChosen={chosenCategory === "All"}
         />
         {categories.map((category) => (
           <CategoryChip onClick={() => setChosenCategory(category.slug)}
@@ -57,7 +72,17 @@ function MainPage() {
         </div>
       </section>
     </div>
-      <Footer/>
+    <div className="flex justify-end">
+      <Pagination
+        className="mb-4"
+        defaultCurrent={1}
+        total={total}
+        pageSize={limit}
+        onChange={(num) => setSkip((num - 1) * limit)}
+        onShowSizeChange={(pageSize) => setLimit(pageSize)}
+      />
+    </div>
+    <Footer />
     </>
   )
 }

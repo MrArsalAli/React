@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { ShoppingFilled } from '@ant-design/icons';
+import { Badge } from "antd";
 
 
 function Navbar() {
@@ -90,14 +92,12 @@ function Navbar() {
                             </div>
                         </div>
                     </div>
-                    <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                        <img
-                            className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-                            src="https://plus.unsplash.com/premium_photo-1676194560725-bf17a3162d2b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZHVtbXklMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D"
-                            alt="Bordered avatar"
-                        />
-
-                    </div>
+                    <Link to="/cart">
+                    <Badge count={5}> 
+                    <ShoppingFilled style={{fontSize : 30}} />
+                    </Badge>
+                    </Link>
+                    
                 </div>
             </div>
             {/* Mobile menu, show/hide based on menu state. */}
