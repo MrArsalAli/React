@@ -1,11 +1,16 @@
-import { useState, useEffect } from "react"
+import { useContext, useState, useEffect } from "react"
 import ProductCard from "../components/ProductCard.jsx"
 import CategoryChip from "../components/CategoryChip.jsx"
 import Footer from "../components/Footer.jsx";
 import React from 'react';
 import { Pagination } from 'antd';
+import { CartContext } from "../Context/CartContext.jsx"
 
 function MainPage() {
+
+  const { cartItems } = useContext(CartContext)
+  console.log(cartItems)
+
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [chosenCategory, setChosenCategory] = useState("All");

@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { ShoppingFilled } from '@ant-design/icons';
 import { Badge } from "antd";
+import { CartContext } from "../Context/CartContext.jsx";
+import { useContext } from "react";
 
 
 function Navbar() {
+    const { cartItems } = useContext(CartContext)
     return (
         <>
         <nav className="bg-gray-300">
@@ -65,7 +68,7 @@ function Navbar() {
                                 className="font-bold h-8 w-auto"
                                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                                 alt="Your Company"
-                            /> 
+                            />
                             <span className="ml-3 text-xl font-bold">Vommerce</span>
                         </Link>
                         <div className="hidden sm:ml-6 sm:block">
@@ -75,7 +78,7 @@ function Navbar() {
                                     to={"/MainPage"}
                                     className="rounded-md px-3 py-2 text-sm font-bold font-medium text-black-300 hover:bg-gray-700 hover:text-white"
                                 >
-                                    React Products
+                                    Products
             </Link>
                                 <Link
                                     to={"aboutus"}
@@ -93,11 +96,11 @@ function Navbar() {
                         </div>
                     </div>
                     <Link to="/cart">
-                    <Badge count={5}> 
-                    <ShoppingFilled style={{fontSize : 30}} />
-                    </Badge>
+                        <Badge count={cartItems.length}>
+                            <ShoppingFilled style={{ fontSize: 30 }} />
+                        </Badge>
                     </Link>
-                    
+
                 </div>
             </div>
             {/* Mobile menu, show/hide based on menu state. */}
