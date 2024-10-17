@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function Navbar() {
+  const navigate = useNavigate()
   return (
     <header className="text-gray-600 bg-gray-200 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -21,7 +22,7 @@ function Navbar() {
           <span className="ml-3 text-xl">KUIYN</span>
         </Link>
         <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-          <Link to={"/product"} className="mr-5 hover:text-gray-900 cursor-pointer font-bold">Products</Link>
+          <span onClick={() => navigate("product")} className="mr-5 hover:text-gray-900 cursor-pointer font-bold">Products</span>
           {/* <a className="mr-5 hover:text-gray-900">Second Link</a>
       <a className="mr-5 hover:text-gray-900">Third Link</a>
       <a className="mr-5 hover:text-gray-900">Fourth Link</a> */}

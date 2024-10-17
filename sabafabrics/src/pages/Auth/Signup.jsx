@@ -1,0 +1,100 @@
+import { useNavigate } from "react-router";
+import Button from "../../components/Button";
+
+function Signup() {
+  const navigate = useNavigate();
+  return (
+    <>
+      <div className="text-center h-24 content-center mt-4 text-4xl protest-strike-regular bg-emerald-50">
+        SIGNUP
+      </div>
+      <form className="max-w-md mx-auto mt-16">
+        <div className="mb-2">
+          <label
+            htmlFor="email"
+            className="block mx-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-medium rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
+            placeholder="user@sabafabrics.com"
+            required=""
+          />
+        </div>
+        <div className="mb-2">
+          <label
+            htmlFor="password"
+            className="block mx-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-medium rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
+            required=""
+          />
+        </div>
+        <div className="flex">
+          <div className="mb-2  mx-auto">
+            <label
+              htmlFor="firstname"
+              className="block mx-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              First Name
+            </label>
+            <input
+              type="text"
+              id="firstName"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-medium rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
+              required=""
+            />
+          </div>
+          <div className="mb-2 mx-auto">
+            <label
+              htmlFor="lastname"
+              className="block mx-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Last Name
+            </label>
+            <input
+              type="text"
+              id="lastName"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-medium rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
+              required=""
+            />
+          </div>
+        </div>
+        <div className="mb-8">
+          <label
+            htmlFor="phonenumber"
+            className="block mx-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phoneNumber"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-medium rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
+            placeholder="123-456-789"
+            required=""
+          />
+        </div>
+        <div>
+          <Button type="submit" text={"Signup"}/>
+          <p
+            onClick={() => navigate("/signin")}
+            className="my-6 cursor-pointer underline"
+          >
+            Already have an account? Login here
+          </p>
+        </div>
+      </form>
+    </>
+  );
+}
+
+export default Signup;
