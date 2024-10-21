@@ -1,14 +1,34 @@
 import { useNavigate } from "react-router";
 import Button from "../../components/Button";
+import { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase.js";
 
 function Signup() {
   const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignupWithEmail = () => {
+      createUserWithEmailAndPassword(auth, email, password)
+    .then((user) => {
+      console.log("signedup");
+    })
+    .catch((error) => {
+      console.log("error==>", error)
+    });
+  };
+
   return (
     <>
       <div className="text-center h-24 content-center mt-4 text-4xl protest-strike-regular bg-emerald-50">
         SIGNUP
       </div>
-      <form className="max-w-md mx-auto mt-16">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="max-w-md mx-auto mt-16"
+      >
         <div className="mb-2">
           <label
             htmlFor="email"
@@ -19,6 +39,8 @@ function Signup() {
           <input
             type="email"
             id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-medium rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
             placeholder="user@sabafabrics.com"
             required=""
@@ -34,6 +56,8 @@ function Signup() {
           <input
             type="password"
             id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-medium rounded focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
             required=""
           />
@@ -84,7 +108,11 @@ function Signup() {
           />
         </div>
         <div>
-          <Button type="submit" text={"Signup"}/>
+          <Button
+          text={"Signup"}
+          type="submit"
+          onClick={handleSignupWithEmail}
+          />
           <p
             onClick={() => navigate("/signin")}
             className="my-6 cursor-pointer underline"
