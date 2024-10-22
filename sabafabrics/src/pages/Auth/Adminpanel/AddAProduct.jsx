@@ -22,27 +22,27 @@ function AddAProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!productImage) return alert("Upload An Image");
+    // if (!productImage) return alert("Upload An Image");
 
-    const imgRef = ref(storage, productImage.name);
-    uploadBytes(imgRef, productImage)
-      .then(() => {
-        console.log("File Uploaded");
-        getDownloadURL(imgRef)
-          .then((url) => {
-            console.log("URL", url);
-            productImage = url;
-            const userProductCollection = collection(db, "userProducts");
-            addDoc(userProductCollection, productImage)
-              .then((doc) => {
-                console.log("Document Added");
-                navigate("/")
-              })
-              .catch(() => {});
-          })
-          .catch(() => {});
-      })
-      .catch(() => {});
+  //   const imgRef = ref(storage, productImage.name);
+  //   uploadBytes(imgRef, productImage)
+  //     .then(() => {
+  //       console.log("File Uploaded");
+  //       getDownloadURL(imgRef)
+  //         .then((url) => {
+  //           console.log("URL", url);
+  //           productImage = url;
+  //           const userProductCollection = collection(db, "userProducts");
+  //           addDoc(userProductCollection, productImage)
+  //             .then((doc) => {
+  //               console.log("Document Added");
+  //               navigate("/")
+  //             })
+  //             .catch(() => {});
+  //         })
+  //         .catch(() => {});
+  //     })
+  //     .catch(() => {});
   };
 
   return (

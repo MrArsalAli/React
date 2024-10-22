@@ -7,14 +7,17 @@ export const CartContext = createContext();
 function CartContextProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
-
+  
   useEffect(() => {
     const cartItemsFromLocal = localStorage.getItem("cartItems");
     if (cartItemsFromLocal) {
       setCartItems([...JSON.parse(cartItemsFromLocal)]);
       setIsLoaded(true);
+      console.log(cartItems);
+      
     }
   }, []);
+
 
   useEffect(() => {
     if (isLoaded) {

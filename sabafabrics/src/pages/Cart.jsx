@@ -7,9 +7,7 @@ import { useNavigate } from "react-router";
 function Cart() {
   const navigate = useNavigate();
   const { cartItems } = useContext(CartContext);
-
-  console.log(cartItems.length);
-
+  
   const totalAmount = cartItems.reduce(
     (total, obj) => total + obj.quantity * obj.price,
     0

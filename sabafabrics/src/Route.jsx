@@ -12,7 +12,6 @@ import Newarrivals from "./pages/NewArrivals.jsx";
 import Fabric from "./pages/Fabric.jsx";
 import Sale from "./pages/Sale.jsx";
 import Productcard from "./components/Productcard.jsx";
-import Adminpanel from "./pages/Auth/Adminpanel/Adminpanelmain.jsx";
 import Orderlist from "./pages/Auth/Adminpanel/Orderlist.jsx";
 import AddAProduct from "./pages/Auth/Adminpanel/AddAProduct.jsx";
 import LayoutWithAlert from "./components/LayoutWithAlert.jsx";
