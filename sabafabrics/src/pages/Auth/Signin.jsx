@@ -4,6 +4,7 @@ import { auth } from "../utils/firebase.js";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
+
 function Signin() {
   const navigate = useNavigate();
 
@@ -21,7 +22,7 @@ function Signin() {
           navigate('/')
         })
         .catch((err) => {
-          console.log(err);
+          alert(err)
         });
     }
   };

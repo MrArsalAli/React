@@ -1,5 +1,6 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import { createContext } from "react";
-import { useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
@@ -21,7 +22,7 @@ function CartContextProvider({ children }) {
     }
   }, [cartItems]);
 
-  function addItemToCart(item) {
+  function addCartItem(item) {
     const arr = cartItems;
 
     const itemIndex = cartItems.findIndex((data) => data.id == item.id);
@@ -58,11 +59,12 @@ function CartContextProvider({ children }) {
       return arr[itemIndex];
     }
   }
+
   return (
     <CartContext.Provider
       value={{
         cartItems,
-        addItemToCart,
+        addCartItem,
         removeCartItem,
         isItemAdded,
         lessQuantityFromCart,

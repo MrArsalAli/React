@@ -6,9 +6,28 @@ import {
 import { Badge } from "antd";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
+import { useContext } from "react";
+import Button from "./Button.jsx";
+import { CartContext } from "../Context/CartContext.jsx";
+import { AuthContext } from "../Context/AuthContext.jsx";
+import { signOut } from "firebase/auth";
+import { auth } from "../pages/utils/firebase.js";
 
 function Navbar() {
   const navigate = useNavigate();
+  const { cartItems } = useContext(CartContext);
+  const { currentUser } = useContext(AuthContext);
+
+  function handleSignout() {
+    signOut(auth)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
+
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="flex justify-end">
@@ -59,14 +78,18 @@ function Navbar() {
                 />
               </li>
               <li>
-                <UserOutlined
-                  onClick={() => navigate("/signup")}
-                  style={{ fontSize: 22 }}
-                  className="inline-flex items-center cursor-pointer border-0 py-1 focus:outline-none rounded text-base mt-4 md:mt-0 icon"
-                />
+                {currentUser ? (
+                  <Button onClick={() => handleSignout()} text={"Logout"} />
+                ) : (
+                  <UserOutlined
+                    onClick={() => navigate("/signup")}
+                    style={{ fontSize: 22 }}
+                    className="inline-flex items-center cursor-pointer border-0 py-1 focus:outline-none rounded text-base mt-4 md:mt-0 icon"
+                  />
+                )}
               </li>
               <li>
-                <Badge count={1}>
+                <Badge count={cartItems.length}>
                   <ShoppingOutlined
                     onClick={() => navigate("/cart")}
                     style={{ fontSize: 22 }}

@@ -1,9 +1,14 @@
 import { useState } from "react";
 import Button from "../../../components/Button";
-import { getStorage, ref } from "firebase/storage";
-import { storage } from "../../utils/firebase";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { db, storage } from "../../utils/firebase";
+import { addDoc, doc, collection } from "firebase/firestore";
+import { useNavigate } from "react-router";
 
 function AddAProduct() {
+  const navigate = useNavigate()
+
+
   const [productImage, setProductImage] = useState(null);
   const [productTitle, setProductTitle] = useState("");
   const [productPrice, setProductPrice] = useState("");
@@ -14,30 +19,31 @@ function AddAProduct() {
     }
   };
 
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if(!productImage) return alert("Upload An Image")
+    if (!productImage) return alert("Upload An Image");
 
-
-      const imgRef = ref(storage, productImage.name)
-    uploadBytes(imgRef, productInfo.productImage)
-        .then(() => {
-            console.log("File Uploaded");
-            getDownloadURL(imgRef).then((url) => {
-                console.log("URL");
-                productInfo.productImage = url;
-                const uProdductsCollection = collection(db, "uProducts", )
-                addDoc(uProdductsCollection, productInfo).then((doc) => {
-                    console.log("Document Added");
-                    window.location.href = "../profile/index.html"
-                }).catch(() => { })
-            }).catch(() => { })
-        }).catch(() => { })
+    const imgRef = ref(storage, productImage.name);
+    uploadBytes(imgRef, productImage)
+      .then(() => {
+        console.log("File Uploaded");
+        getDownloadURL(imgRef)
+          .then((url) => {
+            console.log("URL", url);
+            productImage = url;
+            const userProductCollection = collection(db, "userProducts");
+            addDoc(userProductCollection, productImage)
+              .then((doc) => {
+                console.log("Document Added");
+                navigate("/")
+              })
+              .catch(() => {});
+          })
+          .catch(() => {});
+      })
+      .catch(() => {});
   };
-
 
   return (
     <>
@@ -112,28 +118,6 @@ function AddAProduct() {
 }
 
 export default AddAProduct;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 {
   /* <div className="mb-4">

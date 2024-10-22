@@ -14,9 +14,10 @@ function Signup() {
       createUserWithEmailAndPassword(auth, email, password)
     .then((user) => {
       console.log("signedup");
+      navigate('/')
     })
     .catch((error) => {
-      console.log("error==>", error)
+      elert(error)
     });
   };
 

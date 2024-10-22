@@ -20,6 +20,7 @@ import LayoutWithoutAlert from "./components/LayoutWithoutAlert.jsx";
 import LayoutWithAdminPanel from "./components/LayoutWithAdminPanel.jsx";
 import Adminpanelmain from "./pages/Auth/Adminpanel/Adminpanelmain.jsx";
 import ProductDetail from "./components/ProductDetail.jsx";
+import Checkout from "./pages/Checkout.jsx";
 
 function Approuter() {
   return (
@@ -45,6 +46,7 @@ function Approuter() {
             <Route path="/addaproduct" element={<AddAProduct />} />
           </Route>
           <Route path="/cart" element={<Cart />} />
+          <Route path="checkout" element={<Checkout />} />
           <Route path="/productcard" element={<Productcard />} />
           <Route path="/orderlist" element={<Orderlist />} />
           {/* <Route path="*" element={<Notfound />} /> */}
