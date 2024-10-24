@@ -4,18 +4,18 @@ import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDF4rVQuZAYnRQlJrnWyXKSbWINiXI4td8",
-  authDomain: "sabafabrics-460d1.firebaseapp.com",
-  projectId: "sabafabrics-460d1",
-  storageBucket: "sabafabrics-460d1.appspot.com",
-  messagingSenderId: "13167366065",
-  appId: "1:13167366065:web:c207186a3e5ef3318f7790",
-  measurementId: "G-637PHPM3MG"
+  apiKey: "AIzaSyAxwgoZVpT8JOvZPm8qKbQ78IZ-2195v10",
+  authDomain: "sabafabrics-91513.firebaseapp.com",
+  projectId: "sabafabrics-91513",
+  storageBucket: "sabafabrics-91513.appspot.com",
+  messagingSenderId: "1056611935275",
+  appId: "1:1056611935275:web:e501a18119ba137c1eb66e",
+  measurementId: "G-9KK7BV9L3P"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const storage = getStorage(app)
+const storage = getStorage(app);
 const db = getFirestore(app);
 
 export { app, auth, storage, db };

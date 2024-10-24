@@ -139,13 +139,13 @@ function Navbar() {
           >
             ABOUT US
           </li>
-          <li
+          {/* <li
             onClick={() => navigate("sale")}
             className="block py-2 px-3 text-lg font-semibold text-emerald-600 rounded cursor-pointer hover:bg-gray-100 md:hover:bg-transparent md:hover:text-emerald-300 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700
               "
           >
             MY PRODUCTS
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>

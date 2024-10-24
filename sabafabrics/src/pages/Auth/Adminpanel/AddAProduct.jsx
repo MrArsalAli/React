@@ -14,9 +14,11 @@ function AddAProduct() {
   const [productPrice, setProductPrice] = useState("");
 
   const handleImage = (e) => {
-    if (e.target.files[0]) {
-      setProductImage(e.target.files[0]);
-    }
+    console.log(e.target.files[0]);
+    
+    // if (e.target.files[0]) {
+    //   setProductImage(e.target.files[0]);
+    // }
   };
 
   const handleSubmit = async (e) => {

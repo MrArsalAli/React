@@ -1,6 +1,6 @@
 
-
 function Fabric(){
+  
     return(
         <>
         <div className="text-center h-24 content-center mt-2 text-4xl protest-strike-regular bg-emerald-50">

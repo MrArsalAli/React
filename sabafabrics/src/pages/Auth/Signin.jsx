@@ -4,7 +4,6 @@ import { auth } from "../utils/firebase.js";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-
 function Signin() {
   const navigate = useNavigate();
 
@@ -19,10 +18,10 @@ function Signin() {
       signInWithEmailAndPassword(auth, email, password)
         .then((user) => {
           console.log("SignedIn");
-          navigate('/')
+          navigate("/");
         })
         .catch((err) => {
-          alert(err)
+          alert(err);
         });
     }
   };
@@ -74,13 +73,13 @@ function Signin() {
             htmlFor="remember"
             className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
-          <input
-            type="checkbox"
-            checked={isAdmin}
-            onChange={(e) => setIsAdmin(e.target.checked)}
-            defaultValue=""
-            className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-          />
+            <input
+              type="checkbox"
+              checked={isAdmin}
+              onChange={(e) => setIsAdmin(e.target.checked)}
+              defaultValue=""
+              className="w-4 h-4 mx-2 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+            />
             Signin As Admin
           </label>
         </div>
