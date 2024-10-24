@@ -34,13 +34,9 @@ function Orderlist() {
     fetchOrders();
   }, [db]);
 
-  const handleUpdateStatus = () =>{
-    prompt("Status")
-
-  }
-
-
-
+  const handleUpdateStatus = () => {
+    prompt("Status");
+  };
 
   return (
     <div className="p-8 mx-2 my-2">
