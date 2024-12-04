@@ -25,6 +25,7 @@ function OrderCard({ order, index }) {
             </div>
         </div>
       </div>
+      
     </>
   );
 }

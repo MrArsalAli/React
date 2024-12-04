@@ -1,3 +1,4 @@
+import { Pagination } from "antd"
 
 function Fabric(){
   
@@ -161,6 +162,9 @@ function Fabric(){
       </div>
     </div>
     </div>
+    <div className="flex mt-10">
+        <Pagination className="mx-auto" defaultCurrent={1} total={50} />
+      </div>
     </>
     )
 }

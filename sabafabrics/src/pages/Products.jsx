@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Productcard from "../components/Productcard";
+import { Pagination } from "antd";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -20,6 +21,9 @@ function Products() {
             <Productcard data={data} key={data.id} />
           ))}
         </div>
+      </div>
+      <div className="flex mt-10">
+        <Pagination className="mx-auto" defaultCurrent={1} total={50} />
       </div>
     </>
   );

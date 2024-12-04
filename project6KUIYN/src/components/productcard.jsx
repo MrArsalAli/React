@@ -9,9 +9,8 @@ function ProductCard({ data }) {
   return (
     <Link className="lg:w-1/4 md:w-1/2 p-4 w-full" to={`/product/${id}`}>
       <div className="bg-gray-400 rounded p-2">
-        <img className="block relative h-48 rounded overflow-hidden"
+        <img className="block relative h-48 rounded overflow-hidden object-cover object-center w-full h-full block bg-gray-500 rounded"
           alt="ecommerce"
-          className="object-cover object-center w-full h-full block bg-gray-500 rounded"
           src={thumbnail}
         />
         <div className="mt-4">
